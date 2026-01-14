@@ -30,8 +30,7 @@
 
 #include "rttr/detail/base/version.h"
 
-namespace rttr
-{
+namespace rttr {
 
 #define RTTR_PLATFORM_WINDOWS 1
 #define RTTR_PLATFORM_LINUX 2
@@ -48,9 +47,9 @@ namespace rttr
 #define RTTR_ARCH_32 1
 #define RTTR_ARCH_64 2
 
-/////////////////////////////////////////////////////////////////////////////////////////
-// Platform
-/////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////
+    // Platform
+    /////////////////////////////////////////////////////////////////////////////////////////
 #if defined( __WIN32__ ) || defined( _WIN32 )
 #   define RTTR_PLATFORM RTTR_PLATFORM_WINDOWS
 #elif defined( __APPLE_CC__)
@@ -261,12 +260,12 @@ namespace rttr
 #   define RTTR_BEGIN_DISABLE_CONDITIONAL_EXPR_WARNING
 #   define RTTR_END_DISABLE_CONDITIONAL_EXPR_WARNING
 #if RTTR_COMP_VER >= 700
-    #define RTTR_BEGIN_DISABLE_EXCEPT_TYPE_WARNING      _Pragma ("GCC diagnostic push") \
+#define RTTR_BEGIN_DISABLE_EXCEPT_TYPE_WARNING      _Pragma ("GCC diagnostic push") \
                                                         _Pragma ("GCC diagnostic ignored \"-Wnoexcept-type\"")
-    #define RTTR_END_DISABLE_EXCEPT_TYPE_WARNING        _Pragma ("GCC diagnostic pop")
+#define RTTR_END_DISABLE_EXCEPT_TYPE_WARNING        _Pragma ("GCC diagnostic pop")
 #else
-    #define RTTR_BEGIN_DISABLE_EXCEPT_TYPE_WARNING
-    #define RTTR_END_DISABLE_EXCEPT_TYPE_WARNING
+#define RTTR_BEGIN_DISABLE_EXCEPT_TYPE_WARNING
+#define RTTR_END_DISABLE_EXCEPT_TYPE_WARNING
 #endif
 
 #if RTTR_COMP_VER >= 510
