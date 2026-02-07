@@ -24,12 +24,14 @@ rttr_srcs = glob(["src/rttr/**/*.cpp"])
 # Common compile flags
 # --------------------------------------------------------------------
 rttr_copts = [
+    "--std=c++23",
     # "-DRTTR_DISABLE_WARNINGS",
-    "-DRTTR_DLL",           # needed for shared lib
-    "-DRTTR_COMPILER_GCC",
+    # "-DRTTR_DLL",           # needed for shared lib
+    # "-DRTTR_COMPILER_GCC",
     "-fPIC",
     "-O3",
     "-w", # Suppress all warnings
+    "-Wno-error",
 ]
 
 # --------------------------------------------------------------------
@@ -41,25 +43,7 @@ cc_library(
     hdrs = [":headers"],
     copts = rttr_copts,
     linkstatic = True,
-    strip_include_prefix = "src",
-    include_prefix = "",
-)
-
-# --------------------------------------------------------------------
-# Shared library (librttr_core.so)
-# --------------------------------------------------------------------
-cc_library(
-    name = "rttr_core_shared",
-    srcs = rttr_srcs,
-    hdrs = [":headers"],
-    copts = rttr_copts + ["-fvisibility=hidden"],
-    linkstatic = False,
-    strip_include_prefix = "src",
-    include_prefix = "",
-    linkopts = [
-        "-Wl,--no-undefined",
-    ],
-    alwayslink = True,
+    includes = ["src"]
 )
 
 # --------------------------------------------------------------------
